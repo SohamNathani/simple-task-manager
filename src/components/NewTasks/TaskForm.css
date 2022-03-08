@@ -1,0 +1,24 @@
+form {
+  width: 40vw;
+  margin: auto;
+  /* display:flex;
+    flex-direction: row;
+    justify-content: space-between; */
+}
+
+input {
+  padding: 8px;
+  background-color: white;
+  color: #98d7c2;
+
+  border: 2px solid #98d7c2;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 20vw;
+}
+
+#taskName:active,
+#taskName:focus {
+  border: 2px solid #98d7c2;
+  outline: none;
+}

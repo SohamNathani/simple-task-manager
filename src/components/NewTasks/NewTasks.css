@@ -1,0 +1,9 @@
+.form_container > *{
+    display:block;
+    margin:10px auto;   
+}
+
+.form_container form{
+    display: flex;
+    justify-content: center;
+}

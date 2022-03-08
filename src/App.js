@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Fragment } from "react";
+import NewTasks from "./components/NewTasks/NewTasks";
+import TaskList from "./components/Tasks/TaskList";
+import { useState } from "react";
 
-function App() {
+const App = () => {
+  const [tasks, setTasks] = useState([
+    { task: "My first task", completed: false, id: 1 },
+  ]);
+
+  const handleData = (task) => {
+    setTasks((prevState) => {
+      return [
+        ...prevState,
+        { task: task, completed: false, id: prevState.length + 1 },
+      ];
+    });
+  };
+
+  const changeStatus = (index) => {
+    setTasks((prevState) => {
+      
+        return(
+          prevState.map(el => el.id===index ?{...el, completed:!el.completed}:el)
+        );
+      }
+    );
+  };
+
   return (
-    <div className="App">
+    <Fragment>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h2>Task Manager</h2>
       </header>
-    </div>
+
+      <main>
+        <NewTasks onHandleData={handleData} />
+        <TaskList tasks={tasks} onChangeStatus={changeStatus} />
+      </main>
+    </Fragment>
   );
-}
+};
 
 export default App;
